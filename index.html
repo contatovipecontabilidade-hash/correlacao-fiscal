@@ -623,4 +623,9 @@ var t=null;document.getElementById("q").addEventListener("input",function(e){cle
 var tp=null;document.getElementById("pq").addEventListener("input",function(e){clearTimeout(tp);pQuery=e.target.value;tp=setTimeout(function(){pRender();gravar(false);},140);});
 statusDefault();render("");pChips();pStatus();pRender();tInit();navInit();
 </script>
+<script id="autoatualizar">(function(){if(location.protocol==="file:"||!window.fetch)return;var V="e6462a6e26c7",K="cf-recarga";
+function checar(){fetch("versao.txt?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.ok?r.text():"";}).then(function(n){n=(n||"").trim();if(!n||n===V)return;
+var j="";try{j=sessionStorage.getItem(K)||"";}catch(e){}if(j===n)return;try{sessionStorage.setItem(K,n);}catch(e){}
+fetch(location.pathname,{cache:"reload"}).then(function(){location.reload();},function(){location.reload();});}).catch(function(){});}
+checar();document.addEventListener("visibilitychange",function(){if(!document.hidden)checar();});setInterval(checar,300000);})();</script>
 </body></html>
